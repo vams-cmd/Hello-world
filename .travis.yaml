@@ -1,15 +1,7 @@
 language: java
 sudo: required
-services: 
-- docker
-node_js:
-- '8'
 jdk:
 - openjdk8
-
-
-before_script:
-- source scripts/setup-envinorment.sh
 
 install: 
 - mvn  -N io.takari:maven:wrapper
