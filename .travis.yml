@@ -14,4 +14,4 @@ deploy:
   app: java-microservice
   skip_cleanup: true
   on:
-    branch: master
+    branch:
