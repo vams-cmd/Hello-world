@@ -8,3 +8,10 @@ install:
 
 script:
 - ./mvnw clean install 
+deploy:
+- provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: java-microservice
+  skip_cleanup: true
+  on:
+    branch: master
