@@ -17,12 +17,14 @@ script:
 #    branch: master
 
 deploy:
-- provider: cloudfoundry
-  api: https://api.ng.bluemix.net
+- provider: bluecloudfoundry
+  #api: https://api.ng.bluemix.net
   username: apikey
   password: $FUNC_ID_BLUEMIX_API_KEY_PUBLIC
   organization: siva641919@gmail.com
   space: dev
+  region: eu-gb
   manifest: ./manifest.yml
+  skip_cleanup: true
   on:
     branch: master
