@@ -1,0 +1,11 @@
+apiVersion: skaffold/v1
+kind: Config
+metadata:
+  name: spring-boot-microservice
+build:
+  artifacts:
+  - image: sivakumarsagar/micro-service1
+deploy:
+  kubectl:
+    manifests:
+    - hello-kubernetes.yaml
