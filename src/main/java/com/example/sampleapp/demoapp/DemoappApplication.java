@@ -31,6 +31,10 @@ public class DemoappApplication {
         public String getDevops() {
         return "Hello from Devops Server" + "\n";
         }
-
+	@RequestMapping(value = "/devops/{paramId}", method = RequestMethod.GET)
+        public String getDevopsWithParam(@PathVariable String paramId) {
+        System.out.print("id is " + paramId);
+        return "Hello from Server with Param : " + paramId + "\n";
+        }
 
 }
