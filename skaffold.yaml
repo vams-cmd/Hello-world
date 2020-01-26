@@ -6,6 +6,10 @@ build:
   artifacts:
   - image: sivakumarsagar/micro-service
 deploy:
-  kubectl:
-    manifests:
-    - hello-kubernetes.yaml
+  helm:
+    releases:
+    - name: micro-service-devops
+      chartPath: micro-service
+      values:
+        image: sivakumarsagar/micro-service
+
