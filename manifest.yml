@@ -1,0 +1,8 @@
+applications:
+- name: mytestappdd
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  instances: 1
+  memory: 250M
+  path: target/demoapp-0.0.1-SNAPSHOT.jar
+env:
+    JAVA_OPTS: '-XX:MaxMetaspaceSize=80780k -Xss228k -Xmx200M -XX:ReservedCodeCacheSize=16M -XX:MaxDirectMemorySize=16M'
