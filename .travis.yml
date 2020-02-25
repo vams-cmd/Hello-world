@@ -16,15 +16,15 @@ script:
 #  on:
 #    branch: master
 
-deploy:
-- provider: bluecloudfoundry
+#deploy:
+#- provider: bluecloudfoundry
   #api: https://api.ng.bluemix.net
-  username: apikey
-  password: $FUNC_ID_BLUEMIX_API_KEY_PUBLIC
-  organization: kicksiva191964@gmail.com
-  space: dev
-  region: eu-gb
-  manifest: ./manifest.yml
-  skip_cleanup: true
-  on:
-    branch: master
+#  username: apikey
+#  password: $FUNC_ID_BLUEMIX_API_KEY_PUBLIC
+#  organization: kicksiva191964@gmail.com
+#  space: dev
+#  region: eu-gb
+#  manifest: ./manifest.yml
+#  skip_cleanup: true
+#  on:
+#    branch: master
