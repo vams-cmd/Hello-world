@@ -28,7 +28,8 @@ pipeline {
         }
         steps {
             sh '''
-            cp ${WORKSPACE}/target/demoapp-0.0.1-SNAPSHOT.jar /opt/
+	    mkdir /home/ubuntu/artifacts/${BUILD_NUMBER}/
+            cp ${WORKSPACE}/target/demoapp-0.0.1-SNAPSHOT.jar /home/ubuntu/artifacts/${BUILD_NUMBER}/
             '''
         }
     }
