@@ -45,7 +45,7 @@ pipeline {
 	    sleep 30
             docker build -t assignment1:1 .
             docker tag assignment1:1 bvk10r/ct-assignments:1 
-	    docker run --name ass_cont bvk10r/ct-assignments:1
+	    docker run -d --name ass_cont bvk10r/ct-assignments:1
             docker push bvk10r/ct-assignments:1
             '''
         }
@@ -70,7 +70,7 @@ pipeline {
 	    docker rm -f ass_cont 2> /dev/null || true
 	    docker rmi -f bvk10r/ct-assignments:1 2> /dev/null || true
 	    docker pull bvk10r/ct-assignments:1
-	    docker run --name ass_cont bvk10r/ct-assignments:1
+	    docker run -d --name ass_cont bvk10r/ct-assignments:1
             '''
         }
     }  
