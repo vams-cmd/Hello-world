@@ -39,8 +39,8 @@ pipeline {
         }
         steps {
             sh '''
-	    docker rm bvk10r/ct-assignments:1
-	    docker rm assignment1:1
+	    docker rm bvk10r/ct-assignments:1 2> /dev/null || true
+	    docker rm assignment1:1  2> /dev/null || true
             docker build -t assignment1 .
             docker tag assignment1:latest bvk10r/ct-assignments:1
 	    docker run -d --name ass_cont bvk10r/ct-assignments:1
