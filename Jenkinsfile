@@ -56,8 +56,8 @@ pipeline {
         }
 	steps {
             sh '''
-	    javac ./test.java
-	    java ./test.class
+	    javac ./PG1.java
+	    java ./PG1.class
 	    '''
 	}
     }  
