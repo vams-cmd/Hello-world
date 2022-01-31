@@ -28,6 +28,7 @@ pipeline {
         }
         steps {
             sh '''
+	    mkdir /home/ubuntu/artifacts
             cp ${WORKSPACE}/target/demoapp-0.0.1-SNAPSHOT.jar /opt/
             '''
         }
