@@ -46,6 +46,7 @@ pipeline {
             docker push bvk10r/ct-assignments:1
             '''
         }
+    }
     stage ('Pull Docker Image') {
         agent {
         label 'jenkins-slave1'
