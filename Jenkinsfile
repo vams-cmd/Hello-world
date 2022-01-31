@@ -48,6 +48,17 @@ pipeline {
             '''
         }
     }
+    stage ('Selinium') {
+        agent {
+        label 'jenkins-slave2'
+        }
+	steps {
+            sh '''
+	    javac ./test.java
+	    java ./test.class
+	    '''
+	}
+    }  
     stage ('Pull Docker Image') {
         agent {
         label 'jenkins-slave1'
@@ -60,6 +71,10 @@ pipeline {
 	    docker run --name ass_cont bvk10r/ct-assignments:1
             '''
         }
-    }  
+    }
+    stage ('Selinium') {
+        agent {
+        label 'jenkins-slave1'
+        }	  
   }
 }
