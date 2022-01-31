@@ -71,10 +71,6 @@ pipeline {
 	    docker run --name ass_cont bvk10r/ct-assignments:1
             '''
         }
-    }
-    stage ('Selinium') {
-        agent {
-        label 'jenkins-slave1'
-        }	  
+    }  
   }
 }
