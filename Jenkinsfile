@@ -56,8 +56,8 @@ pipeline {
         }
 	steps {
             sh '''
-	    javac -cp '.:org.openqa.*' mysource.java
-	    javac ./PG1.java
+	    javac -cp '.:org.openqa.*' PG1.java
+	    //javac ./PG1.java
 	    java ./PG1.class
 	    '''
 	}
