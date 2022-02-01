@@ -1,5 +1,5 @@
 FROM adoptopenjdk/openjdk8:alpine-slim
-MAINTAINER abc@gmail.com
+MAINTAINER VAMSI
 WORKDIR /opt/app
 COPY target/demoapp-0.0.1-SNAPSHOT.jar .
 EXPOSE 8080
