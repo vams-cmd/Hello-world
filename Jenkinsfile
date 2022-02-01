@@ -33,5 +33,11 @@ pipeline {
             '''
         }
     }  
- }
+    stage ('Deployment Notification') {
+        agent {
+        label 'jenkins-slave1'
+        }
+        steps {
+		emailext body: '$DEFAULT_PRESEND_SCRIPT', recipientProviders: [buildUser()], subject: 'Deployed to QA', to: 'vamsikrishna1001@gmail.com'	  
+  }
 }
