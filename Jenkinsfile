@@ -31,14 +31,10 @@ pipeline {
 	    docker run -d --name ass_cont bvk10r/ct-assignments:1
             docker push bvk10r/ct-assignments:1
             '''
-        }
-    }  
-    stage ('Deployment Notification') {
-        steps {
-	        emailext body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+            emailext body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
 
 Check console output at $BUILD_URL to view the results.''', recipientProviders: [buildUser()], subject: 'Deployed to QA', to: 'vamsikrishna1001@gmail.com'
         }
-    }
+    }  
   }
 }
