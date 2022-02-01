@@ -35,6 +35,10 @@ pipeline {
 
 Check console output at $BUILD_URL to view the results.''', recipientProviders: [buildUser()], subject: 'Deployed to QA', to: 'vamsikrishna1001@gmail.com'
         }
-    }  
+    }
+    stage ('Build Dev') {
+      steps {
+          build quietPeriod: 30, job: 'QA'
+      }
+    }	  
   }
-}
