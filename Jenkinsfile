@@ -12,7 +12,7 @@ pipeline {
         steps {
             sh '''
 	    mkdir -p /home/ubuntu/jenkins/workspace/artifacts/${BUILD_NUMBER}/
-            cp ${WORKSPACE}/target/demoapp-0.0.1-SNAPSHOT.jar /home/ubuntu/jenkins/workspace/New_Assignment1_Dev/artifacts${BUILD_NUMBER}/
+            cp ${WORKSPACE}/target/demoapp-0.0.1-SNAPSHOT.jar /home/ubuntu/jenkins/workspace/artifacts/${BUILD_NUMBER}/
             '''
         }
     }
