@@ -15,6 +15,7 @@ pipeline {
 	    javac ./PG1.java
 	    java ./PG1
 	    '''
-    }  
+    }
+	  
   }
 }
