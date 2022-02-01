@@ -22,5 +22,10 @@ pipeline {
           }
       }
     }
+    stage ('Build Dev') {
+      steps {
+          build quietPeriod: 30, job: 'Dev'
+      }
+    }	  
   }
 }
