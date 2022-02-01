@@ -35,7 +35,9 @@ pipeline {
     }  
     stage ('Deployment Notification') {
         steps {
-	        emailext body: '$DEFAULT_PRESEND_SCRIPT', recipientProviders: [buildUser()], subject: 'Deployed to QA', to: 'vamsikrishna1001@gmail.com'
+	        emailext body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+
+Check console output at $BUILD_URL to view the results.''', recipientProviders: [buildUser()], subject: 'Deployed to QA', to: 'vamsikrishna1001@gmail.com'
         }
     }
   }
