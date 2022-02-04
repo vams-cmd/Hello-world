@@ -14,8 +14,8 @@ pipeline {
         agent {
         label 'jenkins-slave1'
         }
-      steps {
-      sh 'mvn clean install -f pom.xml'
+        steps {
+        sh 'mvn clean install -f pom.xml'
       }
     }
   }
