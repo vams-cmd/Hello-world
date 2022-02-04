@@ -2,19 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tomcat
+  name: openjdk
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tomcat
+      app: openjdk
   template:
     metadata:
       labels:
-        app: tomcat
+        app: openjdk
     spec:
       containers:
-      - name: tomcat
+      - name: openjdk
         image: 773567626102.dkr.ecr.us-east-1.amazonaws.com/assignment_two:latest
         ports:
         - name: web
