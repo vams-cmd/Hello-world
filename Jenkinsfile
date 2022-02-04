@@ -11,6 +11,9 @@ pipeline {
       }
     }  
     stage ('Build') {
+        agent {
+        label 'jenkins-slave1'
+        }
       steps {
       sh 'mvn clean install -f pom.xml'
       }
