@@ -9,7 +9,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: tomcat
+    app: openjdk
   ports:
     - protocol: TCP
       port: 80
