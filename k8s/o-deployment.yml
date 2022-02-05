@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openjdk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: openjdk
+  template:
+    metadata:
+      labels:
+        app: openjdk
+    spec:
+      containers:
+        - name: openjdk
+          image: '773567626102.dkr.ecr.us-east-1.amazonaws.com/assignment_two:latest'
+          ports:
+            - containerPort: 8080
