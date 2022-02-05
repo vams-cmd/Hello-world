@@ -18,6 +18,24 @@ pipeline {
         sh 'mvn clean install -f pom.xml'
       }
     }
+    stage ('save artifacts') {
+        agent {
+        label 'jenkins-slave1'
+        }
+        steps {
+            sh '''
+	    mkdir -p /home/ubuntu/jenkins/workspace/artifacts/${BUILD_NUMBER}/
+            cp ${WORKSPACE}/target/demoapp-0.0.1-SNAPSHOT.jar /home/ubuntu/jenkins/workspace/artifacts/${BUILD_NUMBER}/
+            '''
+        }
+    }	  
+    stage ('Code Quality') {
+      steps {
+          withSonarQubeEnv('SonarQube') {
+          sh 'mvn -f pom.xml sonar:sonar'
+          }
+      }
+    }	  
     stage ('Build & push image to ECR') {
         agent {
         label 'jenkins-slave1'
@@ -33,7 +51,39 @@ pipeline {
             docker push 773567626102.dkr.ecr.us-east-1.amazonaws.com/assignment_two:latest
             '''
         }
-    }    
+    }
+    stage ('Creating EKS cluster') {
+        agent {
+        label 'jenkins-slave1'
+        }
+        steps {
+            sh '''
+            cd /home/ubuntu/jenkins/workspace/New_Assignment2/terraform
+            terraform init
+            terraform plan
+            terraform apply -auto-approve
+            '''
+        }
+    }
+    stage ('Deployment') {
+        agent {
+        label 'jenkins-slave1'
+        }
+        steps {
+            sh '''
+            cd /home/ubuntu/jenkins/workspace/New_Assignment2/k8s
+            aws eks --region us-east-1 update-kubeconfig --name demo
+            kubectl apply -f aws-test.yaml
+	    kubectl apply -f o-deployment.yml
+	    kubectl apply -f o-service.yml
+	    kubectl apply -f o-ingress-controller.yml	    
+            kubectl apply -f deployment.yaml
+            kubectl apply -f public-lb.yaml
+            kubectl apply -f private-lb.yaml
+            kubectl apply -f cluster-autoscaler.yaml
+            '''
+        }
+    }	  
   }
 }
 
