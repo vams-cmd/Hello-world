@@ -11,8 +11,8 @@ pipeline {
     stage ('Checkout') {
 	when {
     	  allOf {
-             expression { return currentDay! = Calendar.SATURDAY }
-             expression { return currentDay! = Calendar.SUNDAY }
+             expression { return currentDay != Calendar.SATURDAY }
+             expression { return currentDay != Calendar.SUNDAY }
 	  }
 	}	     
       steps {
