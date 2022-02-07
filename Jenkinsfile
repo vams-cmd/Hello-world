@@ -1,3 +1,6 @@
+#!/usr/bin/env groovy
+def currentDay = new Date(System.currentTimeMillis())[Calendar.DAY_OF_WEEK]
+Calendar today = Calendar.getInstance()
 pipeline {
   agent any
  
