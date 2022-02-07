@@ -47,19 +47,19 @@ pipeline {
             '''
         }
     }	  
-    stage ('Code Quality') {
-	when {
-    	  allOf {
-             expression { return currentDay == Calendar.SATURDAY }
-             expression { return currentDay == Calendar.SUNDAY }
-	  }
-	}	    
-      steps {
-          withSonarQubeEnv('SonarQube') {
-          sh 'mvn -f pom.xml sonar:sonar'
-          }
-      }
-    }	  
+//    stage ('Code Quality') {
+//	when {
+//    	  allOf {
+//             expression { return currentDay == Calendar.SATURDAY }
+//             expression { return currentDay == Calendar.SUNDAY }
+//	  }
+//	}	    
+//      steps {
+//          withSonarQubeEnv('SonarQube') {
+//          sh 'mvn -f pom.xml sonar:sonar'
+//          }
+//      }
+//    }	  
     stage ('Build & push image to ECR') {
 	when {
     	  allOf {
@@ -116,9 +116,6 @@ pipeline {
             cd /home/ubuntu/jenkins/workspace/New_Assignment2/k8s
             aws eks --region us-east-1 update-kubeconfig --name demo
             kubectl apply -f aws-test.yaml
-	    kubectl apply -f o-deployment.yml
-	    kubectl apply -f o-service.yml
-	    kubectl apply -f o-ingress-controller.yml	    
             kubectl apply -f deployment.yaml
             kubectl apply -f public-lb.yaml
             kubectl apply -f private-lb.yaml
