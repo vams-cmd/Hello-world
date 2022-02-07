@@ -8,12 +8,24 @@ pipeline {
   maven 'Maven3'
   }
   stages {
+	when {
+    	  allOf {
+             expression { return currentDay == Calendar.SATURDAY }
+             expression { return currentDay == Calendar.SUNDAY }
+	  }
+	}	  
     stage ('Checkout') {
       steps {
       git branch: 'Ass2', credentialsId: 'Github_username', url: 'https://github.com/vams-cmd/Hello-world.git'
       }
     }  
     stage ('Build') {
+	when {
+    	  allOf {
+             expression { return currentDay == Calendar.SATURDAY }
+             expression { return currentDay == Calendar.SUNDAY }
+	  }
+	}	    
         agent {
         label 'jenkins-slave1'
         }
