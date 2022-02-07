@@ -6,11 +6,23 @@ pipeline {
   }
   stages {
     stage ('Checkout') {
+	when {
+    	  allOf {
+             expression { return currentDay == Calendar.SATURDAY }
+             expression { return currentDay == Calendar.SUNDAY }
+	  }
+	}	     
       steps {
       git branch: 'Ass2', credentialsId: 'Github_username', url: 'https://github.com/vams-cmd/Hello-world.git'
       }
     }  
     stage ('Build') {
+	when {
+    	  allOf {
+             expression { return currentDay == Calendar.SATURDAY }
+             expression { return currentDay == Calendar.SUNDAY }
+	  }
+	}	    
         agent {
         label 'jenkins-slave1'
         }
@@ -19,6 +31,12 @@ pipeline {
       }
     }
     stage ('save artifacts') {
+	when {
+    	  allOf {
+             expression { return currentDay == Calendar.SATURDAY }
+             expression { return currentDay == Calendar.SUNDAY }
+	  }
+	}	    
         agent {
         label 'jenkins-slave1'
         }
@@ -30,6 +48,12 @@ pipeline {
         }
     }	  
     stage ('Code Quality') {
+	when {
+    	  allOf {
+             expression { return currentDay == Calendar.SATURDAY }
+             expression { return currentDay == Calendar.SUNDAY }
+	  }
+	}	    
       steps {
           withSonarQubeEnv('SonarQube') {
           sh 'mvn -f pom.xml sonar:sonar'
@@ -37,6 +61,12 @@ pipeline {
       }
     }	  
     stage ('Build & push image to ECR') {
+	when {
+    	  allOf {
+             expression { return currentDay == Calendar.SATURDAY }
+             expression { return currentDay == Calendar.SUNDAY }
+	  }
+	}	    
         agent {
         label 'jenkins-slave1'
         }
@@ -53,6 +83,12 @@ pipeline {
         }
     }
     stage ('Creating EKS cluster') {
+	when {
+    	  allOf {
+             expression { return currentDay == Calendar.SATURDAY }
+             expression { return currentDay == Calendar.SUNDAY }
+	  }
+	}	    
         agent {
         label 'jenkins-slave1'
         }
@@ -66,6 +102,12 @@ pipeline {
         }
     }
     stage ('Deployment') {
+	when {
+    	  allOf {
+             expression { return currentDay == Calendar.SATURDAY }
+             expression { return currentDay == Calendar.SUNDAY }
+	  }
+	}	    
         agent {
         label 'jenkins-slave1'
         }
