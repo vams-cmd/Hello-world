@@ -6,12 +6,6 @@ pipeline {
   }
   stages {
     stage ('Checkout') {
-	when {
-    	  allOf {
-             expression { return currentDay == Calendar.SATURDAY }
-             expression { return currentDay == Calendar.SUNDAY }
-	  }
-	}	     
       steps {
       git branch: 'Ass2', credentialsId: 'Github_username', url: 'https://github.com/vams-cmd/Hello-world.git'
       }
