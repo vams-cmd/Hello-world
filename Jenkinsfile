@@ -11,12 +11,6 @@ pipeline {
       }
     }  
     stage ('Build') {
-	when {
-    	  allOf {
-             expression { return currentDay == Calendar.SATURDAY }
-             expression { return currentDay == Calendar.SUNDAY }
-	  }
-	}	    
         agent {
         label 'jenkins-slave1'
         }
