@@ -22,8 +22,8 @@ pipeline {
     stage ('Build') {
 	when {
     	  allOf {
-             expression { return currentDay == Calendar.SATURDAY }
-             expression { return currentDay == Calendar.SUNDAY }
+             expression { return currentDay != Calendar.SATURDAY }
+             expression { return currentDay != Calendar.SUNDAY }
 	  }
 	}	    
         agent {
@@ -36,8 +36,8 @@ pipeline {
     stage ('save artifacts') {
 	when {
     	  allOf {
-             expression { return currentDay == Calendar.SATURDAY }
-             expression { return currentDay == Calendar.SUNDAY }
+             expression { return currentDay != Calendar.SATURDAY }
+             expression { return currentDay != Calendar.SUNDAY }
 	  }
 	}	    
         agent {
@@ -53,8 +53,8 @@ pipeline {
     stage ('Code Quality') {
 	when {
     	  allOf {
-             expression { return currentDay == Calendar.SATURDAY }
-             expression { return currentDay == Calendar.SUNDAY }
+             expression { return currentDay != Calendar.SATURDAY }
+             expression { return currentDay != Calendar.SUNDAY }
 	  }
 	}	    
       steps {
@@ -66,8 +66,8 @@ pipeline {
     stage ('Build & push image to ECR') {
 	when {
     	  allOf {
-             expression { return currentDay == Calendar.SATURDAY }
-             expression { return currentDay == Calendar.SUNDAY }
+             expression { return currentDay != Calendar.SATURDAY }
+             expression { return currentDay != Calendar.SUNDAY }
 	  }
 	}	    
         agent {
@@ -88,8 +88,8 @@ pipeline {
     stage ('Creating EKS cluster') {
 	when {
     	  allOf {
-             expression { return currentDay == Calendar.SATURDAY }
-             expression { return currentDay == Calendar.SUNDAY }
+             expression { return currentDay != Calendar.SATURDAY }
+             expression { return currentDay != Calendar.SUNDAY }
 	  }
 	}	    
         agent {
@@ -107,8 +107,8 @@ pipeline {
     stage ('Deployment') {
 	when {
     	  allOf {
-             expression { return currentDay == Calendar.SATURDAY }
-             expression { return currentDay == Calendar.SUNDAY }
+             expression { return currentDay != Calendar.SATURDAY }
+             expression { return currentDay != Calendar.SUNDAY }
 	  }
 	}	    
         agent {
