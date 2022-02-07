@@ -47,19 +47,19 @@ pipeline {
             '''
         }
     }	  
-//    stage ('Code Quality') {
-//	when {
-//    	  allOf {
-//             expression { return currentDay == Calendar.SATURDAY }
-//             expression { return currentDay == Calendar.SUNDAY }
-//	  }
-//	}	    
-//      steps {
-//          withSonarQubeEnv('SonarQube') {
-//          sh 'mvn -f pom.xml sonar:sonar'
-//          }
-//      }
-//    }	  
+    stage ('Code Quality') {
+	when {
+    	  allOf {
+             expression { return currentDay == Calendar.SATURDAY }
+             expression { return currentDay == Calendar.SUNDAY }
+	  }
+	}	    
+      steps {
+          withSonarQubeEnv('SonarQube') {
+          sh 'mvn -f pom.xml sonar:sonar'
+          }
+      }
+    }	  
     stage ('Build & push image to ECR') {
 	when {
     	  allOf {
