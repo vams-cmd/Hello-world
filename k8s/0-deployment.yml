@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customapp
+  template:
+    metadata:
+      labels:
+        app: customapp
+    spec:
+      containers:
+        - name: customapp
+          image: '773567626102.dkr.ecr.us-east-1.amazonaws.com/assignment_two:latest'
+          ports:
+            - containerPort: 8080
