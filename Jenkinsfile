@@ -125,7 +125,7 @@ pipeline {
 	    kubectl apply -f 0-ingress-controller.yml
             '''
             emailext body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
-Check console output at $BUILD_URL to view the results.''', recipientProviders: [buildUser()], subject: 'Exposed service url: http://a04668e10ce564a9bb52c37eb57587b3-1515296227.us-east-1.elb.amazonaws.com:8080/hello', to: 'vamsikrishna1001@gmail.com'		
+Check console output at $BUILD_URL to view the results.''', recipientProviders: [buildUser()], subject: 'http://a6f92e4665f944cbd85277328e4189bf-2112747511.us-east-1.elb.amazonaws.com:8080/hello', to: 'vamsikrishna1001@gmail.com'		
         }
     }	  
   }
